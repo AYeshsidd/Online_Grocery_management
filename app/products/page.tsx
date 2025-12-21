@@ -1,4 +1,4 @@
-
+import Mynavbar from "../component/Navbar";
 import ProductCard from "../component/ProductCard";
 
 async function getProducts() {
@@ -14,6 +14,8 @@ export default async function ProductsPage() {
   const products = await getProducts();
 
   return (
+    <>
+      <Mynavbar/>
     <section className="min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-6 ">
         <h1 className="md:text-3xl text-xl font-extrabold text-green-600 mb-8 text-center">
@@ -27,5 +29,6 @@ export default async function ProductsPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }
