@@ -171,13 +171,7 @@ const addProducts = async () => {
       </section>
 
       {/* UPDATE MODAL  */}
-
       
-
-
-<section id="orders" className="text-4xl p-64"> PRODUCww... </section>
-
-<section id="reports" className="text-4xl p-64"> report ... </section>
 {showModal && (
   <div className="fixed inset-0  bg-gray-200 flex items-center justify-center z-50">
     

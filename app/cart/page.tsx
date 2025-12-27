@@ -37,7 +37,7 @@ export default function CartPage() {
       <h1 className="text-3xl font-extrabold mt-5 text-center  text-green-600">Shopping Cart</h1>
       {cart.length === 0 ? (
       <div>
-        <p className="text-center mt-12 text-gray-400 text-sm">You have no items in your shopping cart <br />Click here to continue shopping.</p>
+        <p className="text-center mt-12 text-gray-400 text-sm animate-pulse">You have no items in your shopping cart <br />Click here to continue shopping.</p>
         </div>
       ) : (
         <section className="md:px-4 px-3">
