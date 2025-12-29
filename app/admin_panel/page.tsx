@@ -81,10 +81,10 @@ const addProducts = async () => {
 
     return(
     <>
-     <header className="bg-teal-600 text-white shadow-md">
+     <header className="bg-teal-600 text-white shadow-md mb-12 md:mb-1">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
       
-        <h1 className="text-3xl font-extrabold tracking-tight">
+        <h1 className="md:text-3xl font-extrabold tracking-tight">
           Hello Admin!
         </h1>
 
@@ -110,7 +110,7 @@ const addProducts = async () => {
           </button>
           <Link
             href={"/"}
-            className="px-3 py-2 rounded text-red-600 hover:bg-red-600 hover:text-white transition-colors duration-200 font-semibold"
+            className="px-3 py-2 rounded hover:bg-red-500 bg-red-600 text-white transition-colors duration-200 font-semibold"
           >
             Logout
           </Link>
@@ -120,18 +120,15 @@ const addProducts = async () => {
     </header>
 
 
-  <section id="products" className="p-14">
+  <section id="products" className="md:p-14">
         <div className="flex justify-between">
-        <h2 className="text-3xl font-bold mb-6 text-blue-600 ">Products</h2>
-        <button onClick={() => setShowModal(true)} className="mr-3 mb-3 bg-teal-600 hover:bg-green-800 text-white p-2 text-base cursor-pointer rounded-l-xl ">
+        <h2 className="md:text-3xl text-2xl font-bold mb-6 text-blue-600 px-2 ">Products</h2>
+        <button onClick={() => setShowModal(true)} className="mr-3 md:mb-3 mb-5 bg-teal-600 text-sm  hover:bg-green-800 text-white md:p-2 rounded-lg p-1 md:text-base cursor-pointer">
             Add new product
           </button>
-                  
-
         </div>
-        
 
-        <table className="border w-full">
+        <table className="border w-full text-[9px] lg:text-base">
           <thead>
             <tr className="bg-blue-500 text-white text-left py-3 ">
               <th className="p-2">ID</th>
@@ -153,13 +150,13 @@ const addProducts = async () => {
                 <td className="p-2">{p.category}</td>
                 <td className="p-2">{p.stock_quantity}</td>
 
-                <td className="p-2">
+                <td className="md:p-2">
                   
-                  <button className="mr-3 bg-blue-500 text-white px-2 py-1 rounded text-xs cursor-pointer">
+                  <button className="mr-3 bg-blue-500 text-white px-1 md:text-xs md:px-2 py-1 rounded text-[8px] cursor-pointer">
                     Update
                   </button>
 
-                  <button onClick={() => deleteProduct(p.product_id, p.name)} className="bg-red-500 text-white px-2 py-1 rounded text-xs cursor-pointer hover:scale-110 hover:transition-all ease-in-out">
+                  <button onClick={() => deleteProduct(p.product_id, p.name)} className="bg-red-500 text-white px-1 md:text-xs md:px-2 py-1 rounded text-[8px] cursor-pointer hover:scale-110 hover:transition-all ease-in-out">
                     Delete
                   </button>
                 </td>

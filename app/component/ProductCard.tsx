@@ -74,7 +74,6 @@
 
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { LuCirclePlus } from "react-icons/lu";
 import { MdDelete } from "react-icons/md";
 import { useCart } from "../context/card_context"; // 👈 adjust path if needed

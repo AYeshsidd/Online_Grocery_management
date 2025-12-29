@@ -1,15 +1,85 @@
+// import { NextResponse } from "next/server";
+// import { db } from "@/lib/db";
+
+// export async function POST(req: Request) {
+//   try {
+//     const { customer_name, customer_email, customer_phone, customer_address, cart, total } = await req.json();
+
+//     if (!cart || cart.length === 0) {
+//       return NextResponse.json({ success: false, message: "Cart is empty" });
+//     }
+
+//     // 1️⃣ Check if customer already exists
+//     const [existingCustomer]: any = await db.query(
+//       "SELECT customer_id FROM customer WHERE email = ?",
+//       [customer_email]
+//     );
+
+//     let customerId;
+//     if (existingCustomer.length > 0) {
+//       customerId = existingCustomer[0].customer_id;
+//     } else {
+        
+//       // 2️⃣ Insert new customer
+//       const [custResult]: any = await db.query(
+//         "INSERT INTO customer (name, email, phone, address) VALUES (?, ?, ?, ?)",
+//         [customer_name, customer_email, customer_phone, customer_address]
+//       );
+//       customerId = custResult.insertId;
+//     }
+
+//     // 3️⃣ Insert order linked to this customer
+//     const [orderResult]: any = await db.query(
+//       "INSERT INTO orders (customer_id, total_amount, status) VALUES (?, ?, 'Pending')",
+//       [customerId, total]
+//     );
+//     const orderId = orderResult.insertId;
+
+//     // 4️⃣ Insert all ordered items
+//     for (const item of cart) {
+//       await db.query(
+//         "INSERT INTO order_items (order_id, product_id, product_name, quantity, subtotal) VALUES (?, ?, ?, ?, ?)",
+//         [orderId, item.product_id, item.name, item.quantity, item.price * item.quantity]
+//       );
+
+//     }
+
+//     return NextResponse.json({
+//       success: true,
+//       message: "Order placed successfully!",
+//       order_id: orderId,
+//     });
+
+//   } catch (error: any) {
+//     console.error("❌ Error placing order:", error);
+//     return NextResponse.json(
+//       { success: false, message: "Failed to place order.", error: error.message },
+//       { status: 500 }
+//     );
+//   }
+
+// }
+
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { getDB } from "@/lib/db";
 
 export async function POST(req: Request) {
   try {
-    const { customer_name, customer_email, customer_phone, customer_address, cart, total } = await req.json();
+    const db = await getDB(); // ✅ YAHI MAIN FIX
+
+    const {
+      customer_name,
+      customer_email,
+      customer_phone,
+      customer_address,
+      cart,
+      total
+    } = await req.json();
 
     if (!cart || cart.length === 0) {
       return NextResponse.json({ success: false, message: "Cart is empty" });
     }
 
-    // 1️⃣ Check if customer already exists
     const [existingCustomer]: any = await db.query(
       "SELECT customer_id FROM customer WHERE email = ?",
       [customer_email]
@@ -19,8 +89,6 @@ export async function POST(req: Request) {
     if (existingCustomer.length > 0) {
       customerId = existingCustomer[0].customer_id;
     } else {
-        
-      // 2️⃣ Insert new customer
       const [custResult]: any = await db.query(
         "INSERT INTO customer (name, email, phone, address) VALUES (?, ?, ?, ?)",
         [customer_name, customer_email, customer_phone, customer_address]
@@ -28,20 +96,17 @@ export async function POST(req: Request) {
       customerId = custResult.insertId;
     }
 
-    // 3️⃣ Insert order linked to this customer
     const [orderResult]: any = await db.query(
       "INSERT INTO orders (customer_id, total_amount, status) VALUES (?, ?, 'Pending')",
       [customerId, total]
     );
     const orderId = orderResult.insertId;
 
-    // 4️⃣ Insert all ordered items
     for (const item of cart) {
       await db.query(
         "INSERT INTO order_items (order_id, product_id, product_name, quantity, subtotal) VALUES (?, ?, ?, ?, ?)",
         [orderId, item.product_id, item.name, item.quantity, item.price * item.quantity]
       );
-
     }
 
     return NextResponse.json({
@@ -57,9 +122,7 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
-
 }
-
 
 
 
