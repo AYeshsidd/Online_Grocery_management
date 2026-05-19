@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
 import { GiHamburgerMenu } from "react-icons/gi";
+
 interface Employee {
   id: number;
   name: string;
@@ -20,6 +21,8 @@ const [navbar, setnavbar] = useState(false);
   const buttonstate_Flip = () => {
     setnavbar(!navbar);
   };
+
+  const url = usePathname()
 return(<>
 <header className="bg-[#f8f9fa] shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between p-2">
@@ -32,20 +35,20 @@ return(<>
           />
         </div>
 
-        <nav className="hidden md:flex space-x-6 text-[16px] font-light  text-blue-800 animate-slide-in-down">
+        <nav className="hidden md:flex space-x-6 text-[16px] font-light  text-blue-800">
           <ul className="flex lg:space-x-7 text-base md:space-x-6  ">
             <Link href={"/"}>
-              <li className="hover:scale-110 hover:text-green-700 transition-all cursor-pointer">
+              <li className={`${url === "/" ? " underline bg-gray-200 rounded-lg px-2" : "text-blue-800"} hover:scale-110 hover:text-green-700 transition-all cursor-pointer`}>
                 Home
               </li>
             </Link>
             <Link href={"/products"}>
-              <li className="cursor-pointer hover:text-green-700 hover:scale-110 transition-all">
+              <li className={`${url === "/products" ? " underline bg-gray-200 rounded-lg px-2" : "text-blue-800"} hover:scale-110 hover:text-green-700 transition-all cursor-pointer`}>
                 Products
               </li>
             </Link>
             <Link href={"/cart"}>
-              <li className="cursor-pointer hover:text-green-700 hover:scale-110 transition-all">
+              <li className={`${url === "/cart" ? " underline bg-gray-200 rounded-lg px-2" : "text-blue-800"} hover:scale-110 hover:text-green-700 transition-all cursor-pointer`}>
                 Add to cart
               </li>
             </Link>

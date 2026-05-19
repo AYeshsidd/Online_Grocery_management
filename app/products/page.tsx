@@ -14,7 +14,8 @@ export default async function ProductsPage() {
   const products = await getProducts();
 
   return (
-    <>
+    <div className="bg-[#f8f9fa]">
+
       <Mynavbar/>
     <section className="min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-6 ">
@@ -29,6 +30,7 @@ export default async function ProductsPage() {
         </div>
       </div>
     </section>
-    </>
+    
+  </div>
   );
 }

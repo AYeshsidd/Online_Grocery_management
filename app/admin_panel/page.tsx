@@ -80,7 +80,9 @@ const addProducts = async () => {
 };
 
     return(
-    <>
+    
+    <div className="bg-[#f8f9fa]">
+
      <header className="bg-teal-600 text-white shadow-md mb-12 md:mb-1">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
       
@@ -120,9 +122,9 @@ const addProducts = async () => {
     </header>
 
 
-  <section id="products" className="md:p-14">
+  <section id="products" className="md:p-14 text-gray-700">
         <div className="flex justify-between">
-        <h2 className="md:text-3xl text-2xl font-bold mb-6 text-blue-600 px-2 ">Products</h2>
+        <h2 className="md:text-3xl text-2xl font-bold mb-6 text-gray-600 px-2 ">Products</h2>
         <button onClick={() => setShowModal(true)} className="mr-3 md:mb-3 mb-5 bg-teal-600 text-sm  hover:bg-green-800 text-white md:p-2 rounded-lg p-1 md:text-base cursor-pointer">
             Add new product
           </button>
@@ -130,7 +132,7 @@ const addProducts = async () => {
 
         <table className="border w-full text-[9px] lg:text-base">
           <thead>
-            <tr className="bg-blue-500 text-white text-left py-3 ">
+            <tr className="bg-gray-600 text-white text-left py-3 ">
               <th className="p-2">ID</th>
               <th className="p-2">Name</th>
               <th className="p-2">Price</th>
@@ -180,41 +182,41 @@ const addProducts = async () => {
       <input
         id="name"
         placeholder="Product Name"
-        className="border p-2 w-full mb-3"
+        className="border border-gray-400 p-2 w-full mb-3 text-gray-600"
       />
 
       <input
         id="price"
         type="number"
         placeholder="Price"
-        className="border p-2 w-full mb-3"
-      />
+        className="border p-2 w-full mb-3 text-gray-600"
+        />
 
       <input
         id="category"
         placeholder="Category"
-        className="border p-2 w-full mb-3"
-      />
+        className="border p-2 w-full mb-3 text-gray-600"
+        />
 
       <input
         id="stock"
         type="number"
         placeholder="Stock Quantity"
-        className="border p-2 w-full mb-4"
-      />
+        className="border p-2 w-full mb-4 text-gray-600"
+        />
 
       <div className="flex justify-between">
         <button
           onClick={addProducts}
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-        >
+          className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+          >
           Save
         </button>
 
         <button
           onClick={() => setShowModal(false)}
-          className="bg-gray-300 px-4 py-2 rounded"
-        >
+          className="bg-gray-700 cursor-pointer px-2 rounded hover:scale-105 transition"
+          >
           Cancel
         </button>
       </div>
@@ -223,7 +225,8 @@ const addProducts = async () => {
   </div>
 )}
 
-    </>
+</div>
     
-)
+    
+  )
 }

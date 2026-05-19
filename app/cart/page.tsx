@@ -31,16 +31,17 @@ export default function CartPage() {
   }
 };
   return (
-    <>
+    <div className="bg-[#f8f9fa]">
+
       <Mynavbar/>
     <main className="md:p-6">
       <h1 className="text-3xl font-extrabold mt-5 text-center  text-green-600">Shopping Cart</h1>
       {cart.length === 0 ? (
-      <div>
+        <div>
         <p className="text-center mt-12 text-gray-400 text-sm animate-pulse">You have no items in your shopping cart <br />Click here to continue shopping.</p>
         </div>
       ) : (
-        <section className="md:px-4 px-3">
+        <section className="md:px-4 px-3 text-gray-700">
            <div className="grid grid-cols-5 mt-12 border-b border-gray-400  py-4 md:text-base text-xs font-bold text-center"> 
             <span>Name</span>
             <span>Price</span>
@@ -50,7 +51,7 @@ export default function CartPage() {
             </div>
          
         {cart.map((item) => (
-                      
+          
             <div key={item.product_id} className="text-center grid grid-cols-5 border-gray-200 border-b items-center py-2 text-gray-500 md:text-base text-xs ">
              <span>
                {item.name} 
@@ -72,7 +73,7 @@ export default function CartPage() {
              <span><MdDelete className="text-red-600 cursor-pointer hover:scale-125 inline-block"/></span>
           </div>
            
-        ))}
+          ))}
         <div className="p-3 md:mx-12 mt-16 bg-gray-200 shadow-xl rounded-lg border-black border md:max-w-sm ">
 <h3 className="text-2xl font-light text-gray-600 border-b border-black text-center py-2">Order summary</h3>
          <aside className="text-xl  mx-3 font-bold mt-5 mb-5">Total: Rs. {total}</aside> 
@@ -93,6 +94,8 @@ export default function CartPage() {
         
              )}
         </main>
-    </>
+        </div>
+    
   )}
-
+  
+  
